@@ -20,16 +20,35 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'app/images/neel.png' %}" width="70" height="50">
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Products
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Milk</a></li>
+                      <li><a class="dropdown-item" href="#">Curd</a></li>
+                      <li><a class="dropdown-item" href="#">Milkshake</a></li>
+                      <li><a class="dropdown-item" href="#">Lassi</a></li>
+                      <li><a class="dropdown-item" href="#">Ghee</a></li>
+                      <li><a class="dropdown-item" href="#">Paneer</a></li>
+                      <li><a class="dropdown-item" href="#">Cheese</a></li>
+                      <li><a class="dropdown-item" href="#">Ice-creams</a></li>
+
+                    </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
