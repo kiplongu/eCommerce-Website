@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render
 from urllib import request
 from django.http import HttpResponse
@@ -14,4 +15,5 @@ def home(request):
 class CategoryView(View):
     def get(self, request, val):
         product = Product.objects.filter(category=val)
+        title = Product.objects.filter(category=val).values('title')
         return render(request, 'app/category.html', locals())
