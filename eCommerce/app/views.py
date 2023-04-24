@@ -2,7 +2,7 @@ from django.shortcuts import render
 from urllib import request
 from django.http import HttpResponse
 from django.views import View
-
+from . models import Product
 # Create your views here.
 
 #render a page using a function
@@ -13,4 +13,5 @@ def home(request):
 #render a page using a class
 class CategoryView(View):
     def get(self, request, val):
+        product = Product.objects.filter(category=val)
         return render(request, 'app/category.html', locals())
