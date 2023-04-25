@@ -4,7 +4,9 @@ from urllib import request
 from django.http import HttpResponse
 from django.views import View
 from . models import Product
-# Create your views here.
+from . forms import CustomerRegistrationForm
+
+#Django Views are python functions that takes http request and returns http response, like HTML documents.
 
 #render a page using a function
 def home(request):
@@ -18,7 +20,7 @@ def contact(request):
 
 
 
-#render a page using a class
+#render a page using a class-method based
 class CategoryView(View):
     def get(self, request, val):
         product = Product.objects.filter(category=val)
@@ -37,3 +39,9 @@ class ProductDetail(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
         return render(request, 'app/productdetail.html', locals())
+
+
+class CustomerRegistrationView(View):
+    def get(self, request):
+        form = CustomerRegistrationForm()
+        return render(request, 'app/customerregistration.html', locals())
