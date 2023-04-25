@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.views import View
 from . models import Product
 from . forms import CustomerRegistrationForm
+from django.contrib import messages
 
 #Django Views are python functions that takes http request and returns http response, like HTML documents.
 
@@ -45,3 +46,13 @@ class CustomerRegistrationView(View):
     def get(self, request):
         form = CustomerRegistrationForm()
         return render(request, 'app/customerregistration.html', locals())
+
+    def post(self, request):
+        form = CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Congratulations! User Register Successfully')
+        else:
+            messages.warning(request, 'Invalid Input Data')
+        return render(request, 'app/customerregistration.html', locals())
+
