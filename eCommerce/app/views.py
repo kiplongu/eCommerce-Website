@@ -3,7 +3,7 @@ from django.shortcuts import render
 from urllib import request
 from django.http import HttpResponse
 from django.views import View
-from . models import Product
+from . models import Product, Customer
 from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 
@@ -64,4 +64,19 @@ class ProfileView(View):
         return render(request, 'app/profile.html', locals())
 
     def post(self, request):
+        form = CustomerProfileForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            locality = form.cleaned_data['locality']
+            city = form.cleaned_data['city']
+            mobile = form.cleaned_data['mobile']
+            state = form.cleaned_data['state']
+            zipcode = form.cleaned_data['zipcode']
+
+            reg = Customer(user=user, locality=locality, city=city, mobile=mobile, state=state, zipcode=zipcode)
+            reg.save()
+            messages.success(request, 'Congratulations! Profile Save Successfully')
+        else:
+            messages.warning(request, 'Invalid Input Data')
+
         return render(request, 'app/profile.html', locals())
