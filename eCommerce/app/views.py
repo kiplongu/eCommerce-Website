@@ -60,6 +60,7 @@ class CustomerRegistrationView(View):
 
 class ProfileView(View):
     def get(self, request):
+        form = CustomerRegistrationForm()
         return render(request, 'app/profile.html', locals())
 
     def post(self, request):
