@@ -19,13 +19,11 @@
                 <ul class="fs-5" style="font-family: Arial, Helvetica, sans-serif;">
                     <li>{{product.description}}</li>
                 </ul>
-                <div class="buttons row flex" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                    <button type="submit" class="d-grid gap-2 btn1 btn btn-danger p-1 m-1 btn-lg text-decoration-none text-white">Add to cart</button>
-                    <div class="btn btn-dark p-1 m-1 btn-lg">
-                        <a href="#" class="text-decoration-none text-white">Buy Now</a>
-                    </div>
-
-                </div>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{product.id}}">
+                    <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to cart</button>
+                </form>
+                <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Buy Now</a>
             </div>
         </div>
     </div>
